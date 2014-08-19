@@ -1,4 +1,6 @@
-﻿namespace Identity2.Core.Model
+﻿using System.Collections;
+
+namespace Identity2.Core.Model
 {
     public class Account
     {
