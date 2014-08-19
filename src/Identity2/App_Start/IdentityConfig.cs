@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Identity2.Models;
+using System.Diagnostics;
 
 namespace Identity2
 {
@@ -23,6 +24,7 @@ namespace Identity2
     {
         public Task SendAsync(IdentityMessage message)
         {
+            Debug.Print(message.Body);
             // Plug in your SMS service here to send a text message.
             return Task.FromResult(0);
         }
