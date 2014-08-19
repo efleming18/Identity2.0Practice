@@ -2,16 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Identity2.Models
+namespace Identity2.ViewModels.Admin
 {
-    public class RoleViewModel
-    {
-        public string Id { get; set; }
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "RoleName")]
-        public string Name { get; set; }
-    }
-
     public class EditUserViewModel
     {
         public string Id { get; set; }

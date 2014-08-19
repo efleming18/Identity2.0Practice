@@ -1,4 +1,5 @@
 ﻿using Identity2.Models;
+using Identity2.ViewModels.Admin;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,12 +9,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
-using Identity2;
-using Identity2.Models;
 
 namespace Identity2.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         public RolesAdminController()
