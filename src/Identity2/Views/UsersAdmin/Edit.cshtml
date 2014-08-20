@@ -38,7 +38,7 @@
             <span class=" col-md-10">
                 @foreach (var item in Model.AccountsList)
                 {
-                    <input type="checkbox" name="SelectedRole" value="@item.Name" checked="@item.Selected" class="checkbox-inline" />
+                    <input type="checkbox" name="SelectedAccounts" value="@item.Name" checked="@item.Selected" class="checkbox-inline" />
                     @Html.Label(item.Name, new { @class = "control-label" })
                 }
             </span>

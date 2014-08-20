@@ -9,6 +9,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WebGrease;
 
 namespace Identity2.Controllers
 {
@@ -154,7 +155,7 @@ namespace Identity2.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, string[] selectedRole, string[] selectedAccounts)
         {
             if (ModelState.IsValid)
             {
@@ -170,7 +171,8 @@ namespace Identity2.Controllers
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
                 selectedRole = selectedRole ?? new string[] { };
-
+                selectedAccounts = selectedAccounts ?? new string[] {};
+ 
                 var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
 
                 if (!result.Succeeded)
