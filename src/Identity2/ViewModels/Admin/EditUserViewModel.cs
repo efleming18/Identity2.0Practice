@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -14,5 +15,6 @@ namespace Identity2.ViewModels.Admin
         public string Email { get; set; }
 
         public IEnumerable<SelectListItem> RolesList { get; set; }
+        public List<Core.Model.Account> AccountsList { get; set; }
     }
 }

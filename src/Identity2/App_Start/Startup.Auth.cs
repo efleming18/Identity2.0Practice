@@ -1,5 +1,6 @@
 ﻿using System;
 using Identity2.Infrastructure.Data;
+using Identity2.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;

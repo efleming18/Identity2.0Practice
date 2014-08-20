@@ -33,7 +33,16 @@
                 }
             </span>
         </div>
-
+        <div class="form-group">
+            @Html.Label("Accounts", new { @class = "control-label col-md-2" })
+            <span class=" col-md-10">
+                @foreach (var item in Model.AccountsList)
+                {
+                    <input type="checkbox" name="SelectedRole" value="@item.Name" class="checkbox-inline" />
+                    @Html.Label(item.Name, new { @class = "control-label" })
+                }
+            </span>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

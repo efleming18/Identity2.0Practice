@@ -1,6 +1,7 @@
-﻿using Identity2.Models;
+﻿using Identity2.Infrastructure.Data;
 using Identity2.ViewModels.Account;
 using Identity2.ViewModels.Admin;
+using Identity2.ViewModels.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Identity2.Controllers
         {
         }
 
-        public UsersAdminController(ApplicationUserManager userManager, Identity2.ApplicationSignInManager.ApplicationRoleManager roleManager)
+        public UsersAdminController(ApplicationUserManager userManager, ApplicationSignInManager.ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             RoleManager = roleManager;
@@ -37,8 +38,8 @@ namespace Identity2.Controllers
             }
         }
 
-        private Identity2.ApplicationSignInManager.ApplicationRoleManager _roleManager;
-        public Identity2.ApplicationSignInManager.ApplicationRoleManager RoleManager
+        private ApplicationSignInManager.ApplicationRoleManager _roleManager;
+        public ApplicationSignInManager.ApplicationRoleManager RoleManager
         {
             get
             {
@@ -133,7 +134,7 @@ namespace Identity2.Controllers
             }
 
             var userRoles = await UserManager.GetRolesAsync(user.Id);
-
+            var db = new MainDbContext();
             return View(new EditUserViewModel()
             {
                 Id = user.Id,
@@ -143,7 +144,8 @@ namespace Identity2.Controllers
                     Selected = userRoles.Contains(x.Name),
                     Text = x.Name,
                     Value = x.Name
-                })
+                }),
+                AccountsList = db.Accounts.ToList()
             });
         }
 

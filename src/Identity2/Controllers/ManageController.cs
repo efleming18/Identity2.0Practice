@@ -1,7 +1,7 @@
 ﻿using Identity2;
 using Identity2.Controllers;
 using Identity2.Models;
-using Identity2.Models;
+using Identity2.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

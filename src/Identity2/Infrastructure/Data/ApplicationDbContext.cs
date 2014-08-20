@@ -1,4 +1,5 @@
 ﻿using Identity2.Models;
+using Identity2.ViewModels.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Identity2.Infrastructure.Data

@@ -1,5 +1,6 @@
 ﻿using Identity2.Models;
 using Identity2.ViewModels.Admin;
+using Identity2.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
