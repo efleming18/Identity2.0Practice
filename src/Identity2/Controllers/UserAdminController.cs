@@ -135,6 +135,7 @@ namespace Identity2.Controllers
 
             var userRoles = await UserManager.GetRolesAsync(user.Id);
             var db = new MainDbContext();
+
             return View(new EditUserViewModel()
             {
                 Id = user.Id,
