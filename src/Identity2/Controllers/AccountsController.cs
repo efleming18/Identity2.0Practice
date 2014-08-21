@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Identity2.Core.Interfaces;
 using Identity2.Core.Model;
 using Identity2.Infrastructure.Data;
 
@@ -17,6 +18,7 @@ namespace Identity2.Controllers
         private readonly MainDbContext db = new MainDbContext();
         private readonly IAccountsRepository _accountsRepository;
 
+        //Poor-mans DI - waiting for Steve for DI implementation
         public AccountsController()
             : this(new AccountsRepository())
         {
@@ -32,26 +34,6 @@ namespace Identity2.Controllers
         {
             var accounts = _accountsRepository.GetAllAccounts();
             return View(accounts);
-        }
-
-        private List<Account> GetAllAccounts()
-        {
-            return db.Accounts.ToList();
-        }
-
-        public class AccountsRepository : IAccountsRepository
-        {
-            private MainDbContext db = new MainDbContext();
-
-            public virtual IEnumerable<Account> GetAllAccounts()
-            {
-                return db.Accounts.ToList();
-            }
-        }
-
-        public interface IAccountsRepository
-        {
-            IEnumerable<Account> GetAllAccounts();
         }
 
         // GET: Accounts/Details/5

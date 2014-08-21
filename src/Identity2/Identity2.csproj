@@ -165,6 +165,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\Interfaces\IAccountsRepository.cs" />
     <Compile Include="Core\Model\Account.cs" />
     <Compile Include="Core\Model\User.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Data\AccountsRepository.cs" />
     <Compile Include="Infrastructure\Data\MainDbContext.cs" />
     <Compile Include="Infrastructure\Data\MainDbInitializer.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
