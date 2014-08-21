@@ -42,6 +42,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.1.0.133\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -163,7 +172,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Infrastructure\Data\AccountsRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Core\Interfaces\IAccountsRepository.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Core\Model\Account.cs" />
     <Compile Include="Core\Model\User.cs" />
@@ -174,6 +185,8 @@
     </Compile>
     <Compile Include="Infrastructure\Data\MainDbContext.cs" />
     <Compile Include="Infrastructure\Data\MainDbInitializer.cs" />
+    <Compile Include="App_Start\IoC.cs" />
+    <Compile Include="Tests\AccountsControllerTests\IndexShould.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -268,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

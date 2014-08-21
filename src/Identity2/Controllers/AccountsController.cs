@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Identity2.Core.Interfaces;
 using Identity2.Core.Model;
 using Identity2.Infrastructure.Data;
 
@@ -15,11 +13,32 @@ namespace Identity2.Controllers
     public class AccountsController : Controller
     {
         private MainDbContext db = new MainDbContext();
+        private readonly IAccountsRepository _accountsRepository;
+
+        public AccountsController()
+        { }
+
+        public AccountsController(IAccountsRepository accountsRepository)
+        {
+            _accountsRepository = accountsRepository;
+        }
 
         // GET: Accounts
-        public async Task<ActionResult> Index()
+        //public async Task<ActionResult> Index()
+        //{
+        //    var accounts = _accountsRepository.GetAllAccounts();
+        //    return View(accounts);
+        //}
+
+        public ActionResult Index()
         {
-            return View(await db.Accounts.ToListAsync());
+            var accounts = _accountsRepository.GetAllAccounts();
+            return View(accounts);
+        }
+
+        private List<Account> GetAllAccounts()
+        {
+            return db.Accounts.ToList();
         }
 
         // GET: Accounts/Details/5
