@@ -14,12 +14,44 @@ namespace Identity2.Controllers
 {
     public class AccountsController : Controller
     {
-        private MainDbContext db = new MainDbContext();
+        private readonly MainDbContext db = new MainDbContext();
+        private readonly IAccountsRepository _accountsRepository;
+
+        public AccountsController()
+            : this(new AccountsRepository())
+        {
+        }
+
+        public AccountsController(IAccountsRepository accountsRepository)
+        {
+            _accountsRepository = accountsRepository;
+        }
 
         // GET: Accounts
         public async Task<ActionResult> Index()
         {
-            return View(await db.Accounts.ToListAsync());
+            var accounts = _accountsRepository.GetAllAccounts();
+            return View(accounts);
+        }
+
+        private List<Account> GetAllAccounts()
+        {
+            return db.Accounts.ToList();
+        }
+
+        public class AccountsRepository : IAccountsRepository
+        {
+            private MainDbContext db = new MainDbContext();
+
+            public virtual IEnumerable<Account> GetAllAccounts()
+            {
+                return db.Accounts.ToList();
+            }
+        }
+
+        public interface IAccountsRepository
+        {
+            IEnumerable<Account> GetAllAccounts();
         }
 
         // GET: Accounts/Details/5
